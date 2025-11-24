@@ -1,0 +1,262 @@
+#Characters
+dict_characters = { 1 : {"name" : "Luffy","category": 1, "weapons": [1, 1],"strength" : 6, "speed" :
+7,"experience": 0},
+ 2 : {"name" : "Zoro","category": 1, "weapons" : [4],"strength" : 5, "speed" : 6,"experience":
+0},
+ 3 : {"name" : "Sanji", "category" : 1, "weapons" : [1,3],"strength" : 4, "speed" :
+6,"experience": 0 },
+ 4 : {"name" : "Buggy", "category" : 2, "weapons" : [3], "strength" : 2, "speed" : 4,
+"experience" : 0},
+ 5 : {"name" : "Mr3", "category" : 2, "weapons" : [5], "strength" : 3, "speed" : 2, "experience"
+: 0},
+ 6 : {"name" : "Xebec", "category" : 3, "weapons" : [1,3], "strength" : 6, "speed" : 5,
+"experience" : 0},
+ 7 : {"name" : "Kaido", "category" : 3, "weapons" : [4], "strength" : 8, "speed" : 3,
+"experience" : 0},
+ 8 : {"name" : "Mama grande", "category" : 3, "weapons" : [5], "strength" : 7, "speed" : 1,
+"experience" : 0},
+ 9 : {"name" : "Akainu", "category" : 4, "weapons" : [2], "strength" : 6, "speed" : 4,
+"experience" : 0},
+ 10 : {"name" : "Kizaru", "category" : 4, "weapons" : [1,3], "strength" : 5, "speed" : 8,
+"experience" : 0},
+ 11 : {"name" : "Fujitora", "category" : 4, "weapons" : [5], "strength" : 5, "speed" : 4,
+"experience" : 0},
+ 12 : {"name" : "Garp", "category" : 5, "weapons" : [2], "strength" : 6, "speed" : 3,
+"experience" : 0},
+ 13 : {"name" : "Smoker", "category" : 5, "weapons" : [5], "strength" : 5, "speed" : 5,
+"experience" : 0},
+ 14 : {"name" : "Koby", "category" : 6, "weapons" : [4], "strength" : 3, "speed" : 4,
+"experience" : 0},
+ 15 : {"name" : "Tashigi", "category" : 6, "weapons" : [3], "strength" : 4, "speed" : 4,
+"experience" : 0},
+ }
+#Weapons
+dict_weapons = { 1 : {"name" : "Sword","strength": 3,"speed": 5,"two_hand":False},
+ 2 : {"name" : "Greatsword","strength": 5,"speed": 3,"two_hand":True},
+ 3 : {"name" : "Gun","strength": 2,"speed": 6,"two_hand":False},
+ 4: {"name": "Rifle", "strength": 3, "speed": 4,"two_hand":True},
+ 5: {"name": "Chuchi", "strength": 4, "speed": 4,"two_hand":True},
+ }
+#Crews
+dict_crews = { 1 : {"name" : "Straw hat","members": [8,6]},
+ 2 : {"name" : "Pirates Buggy","members": [1,3,5]},
+ 3: {"name": "Pirates Rocks","members": [2,4,7,]}
+ }
+#Ranks
+dict_ranks = { 1 : {"name" : "Admiral","members": [9,10,11]},
+ 2 : {"name" : "ViceAdmiral","members": [12,13]},
+ 3: {"name": "Lieutenant","members": [14,15]}
+ }
+dict_categorys = {1:"Straw hat",2:"Pirates Buggy",3:"Pirates Rocks",4:"Admiral",5:"ViceAdmiral",6:"Lieutenant"}
+
+#Menus
+menu="Menu 0 (One Piece)".center(40,"=")+"\n\n"+"1)Play"+"\n"+"2)Create"+"\n"+"3)Edit"+"\n"+"4)List"+"\n"+"5)Exit"+"\n"
+menu1="Not Implemented".center(40,"=")+"\n"+"1)Go back"
+menu2="Menu 02 Create".center(40,"=")+"\n\n"+"1) Crete Character"+"\n"+"2) Create  Weapon"+"\n"+"3) Go back"
+menu3="Menu 03 (Edit Menu) ".center(40,"=")+"\n\n"+"1)Fin Users by DNI"+"\n"+"2)Find Users by Name"+"\n"+"3)Go back"
+menu4="Menu 04 (List)".center(40,"=")+"\n\n"+"1)List characters"+"\n"+"2)List weapons"+"\n"+"3)List side"+"\n"+"4)List range"+"\n"+"5)Go back"
+menu41="Menu 041 (List Character)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
+menu42="Menu 042 (List Weapons)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
+
+#Cositas tipo menu 
+cabeceraidch="Characters ordered by Id".center(60,"=")
+tituloch="{:10}{:10}{:>10}{:>10}{:>10}".format("Id","name","strength","speed","experience")
+
+#VARIABLES DE CREACION DE PERSONAJE
+new_character = {}
+new_nombre = ""
+datos_character = ""
+
+#FLAGS
+flg_00=True
+flg_01=False
+flg_02=False
+flg_021=False
+flg_022=False
+flg_03=False
+flg_031=False
+flg_032=False
+flg_04=False
+flg_041=False
+flg_042=False
+flg_043=False
+flg_044=False
+flg_05=False
+salir = False
+#CODIGOOOO
+while not salir:
+    while flg_00:
+        print(menu)
+        opc = input("->Option: ")
+        if not opc .isdigit():
+            print("Opcion no numerica")
+            input("Enter to continue")
+        elif not (int(opc) in range(1, 6)):
+            print("opcion numerica no valida")
+            input("Enter to continue")
+        else:
+            opc = int(opc)
+            if opc == 1:
+                flg_00 = False
+                flg_01 = True
+            elif opc == 2:
+                flg_00 = False
+                flg_02 = True
+            elif opc == 3:
+                flg_00 = False
+                flg_03 = True
+            elif opc == 4:
+                flg_00 = False
+                flg_04 = True
+            elif opc == 5:
+                flg_00 = False
+                salir = True
+        # menu01 Finish
+        while flg_01:
+            print(menu1)
+            opc = input("->Option: ")
+            if not opc .isdigit():
+                print("Opcion no numerica")
+                input("Enter to continue")
+            elif not (int(opc) in range(1, 2)):
+                print("opcion numerica no valida")
+                input("Enter to continue")
+            else:
+                opc = int(opc)
+                if opc == 1:
+                    flg_00 = True
+                    flg_01 = False
+        
+        # menu02
+        while flg_02:
+            print(menu2)
+            opc = input("->Option: ")
+            if not opc .isdigit():
+                print("Opcion no numerica")
+                input("Enter to continue")
+            elif not (int(opc) in range(1, 4)):
+                print("opcion numerica no valida")
+                input("Enter to continue")
+            else:
+                opc = int(opc)
+                #CREACION DE PERSONAJE
+                if opc == 1:
+
+                    flg_02 = False
+                    flg_021 = True
+                    new_nombre= input("Name of the new character")
+                    while new_nombre=="":
+                        print("The option is empty")
+                        new_nombre = input("Name of the new character")
+                    new_character = []
+
+                    #MINI MENU DE ELECCION DE CREW
+                    crew_choice = "Side of the new character"+"\n"+ "1)Marine"+"\n"+"2)Pirate"
+                    crew_option=input("-> Option:")
+                    if not crew_option .isdigit():
+                        print("Opcion no numerica")
+                        input("Enter to continue")
+                    elif not (int(crew_option) in range(1, 3)):
+                        print("opcion numerica no valida")
+                        input("Enter to continue")
+
+                            
+                    else:
+                        crew_option=int(crew_option)
+                        if crew_option == 1:
+                        #Marine y escoger el rango del miembro
+                            print("Ahora lo quito")
+
+                        elif crew_option == 2:
+                            # Pirata y escoger el equipo
+                            print("Ahora lo quito")
+                elif opc == 2:
+                    flg_02 = False
+                    flg_021 = True
+                    
+                    
+
+                
+                #BACK
+                elif opc == 3:
+                    flg_00=True
+                    flg_02=False
+        # menu03 infinito
+        while flg_03:
+            print(menu3)
+            opc = input("->Option: ")
+            if not opc .isdigit():
+                print("Opcion no numerica")
+                input("Enter to continue")
+            elif not (int(opc) in range(1, 4)):
+                print("opcion numerica no valida")
+                input("Enter to continue")
+            else:
+                opc = int(opc)
+                if opc == 1:
+                    flg_03 = True
+                    flg_031 = False
+                elif opc == 2:
+                    flg_03 = True
+                    flg_032 = False
+                elif opc == 3:
+                    flg_00 = True
+                    flg_03 = False
+                    
+        # menu04
+        while flg_04:
+            print(menu4)
+            opc = input("->Option: ")
+            if not opc .isdigit():
+                print("Opcion no numerica")
+                input("Enter to continue")
+            elif not (int(opc) in range(1, 6)):
+                print("opcion numerica no valida")
+                input("Enter to continue")
+            else:
+                opc = int(opc)
+                if opc == 1:
+                    flg_04 = False
+                    flg_041 = True
+                    while flg_041:
+                        print(menu41)
+                        opc = input("->Option: ")
+                        if not opc .isdigit():
+                            print("Opcion no numerica")
+                            input("Enter to continue")
+                        elif not (int(opc) in range(1, 6)):
+                            print("opcion numerica no valida")
+                            input("Enter to continue")
+                        else:
+                            opc = int(opc)
+                            if opc == 1:
+                                lista_ids=list(dict_characters.keys())
+                                for pasada in range (len(lista_ids)):
+                                    for i in range(len(lista_ids)-1 -pasada):
+                                        if lista_ids[i][2:]>lista_ids[i+1][2:]:
+                                            aux=lista_ids[i]
+                                            lista_ids[i] = lista_ids[i + 1]
+                                            lista_ids[i + 1] = aux
+                                print(lista_ids)
+                                datos=""
+                                for id in lista_ids:
+                                    datos = datos +"\n" + "{:10}{:10}{:>10}{:>10}{:>10}{:>10}".format(id,dict_characters[id]["description"],dict_characters[id]["strength"],dict_characters[id]["defense"],dict_characters[id]["agility"],dict_characters[id]["stamina"])+"\n"
+                                print(cabeceraidch,tituloch,datos)
+                elif opc == 2:
+                    flg_04 = False
+                    flg_042 = True
+                    while flg_042:
+                        print(menu42)
+                        opc = input("->Option: ")
+                        if not opc .isdigit():
+                            print("Opcion no numerica")
+                            input("Enter to continue")
+                        elif not (int(opc) in range(1, 6)):
+                            print("opcion numerica no valida")
+                            input("Enter to continue")
+                        else:
+                            opc = int(opc)                                
+                elif opc == 5:
+                    flg_00 = True
+                    flg_04 = False
+
