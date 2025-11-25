@@ -59,8 +59,16 @@ menu41="Menu 041 (List Character)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)
 menu42="Menu 042 (List Weapons)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
 
 #Cositas tipo menu 
-cabeceraidch="Characters ordered by Id".center(60,"=")
-tituloch="{:10}{:10}{:>10}{:>10}{:>10}".format("Id","name","strength","speed","experience")
+cabecerachid="Characters ordered by Id".center(60,"=")
+cabecerachn = "Characters ordered by Name".center(60, "=")
+cabecerachs = "Characters ordered by Strength".center(60, "=")
+cabecerachspe = "Characters ordered by Speed".center(60, "=")
+cabecerach = "\n{:<10}{:<17}{:<13}{:<10}{:<10}".format("Id", "name", "strength", "speed", "experience")
+cabecerawpid = "Weapon ordered by Id".center(60, "=")
+titulowp = "\n{:<10}{:<17}{:<13}{:<10}{:<10}".format("Id", "name", "strength", "speed", "two hand")
+cabecerawpn = "Weapon ordered by Name".center(60, "=")
+cabecerawps = "Weapon ordered by Strength".center(60, "=")
+cabeceracwppe = "Weapon ordered by Speed".center(60, "=")
 
 #VARIABLES DE CREACION DE PERSONAJE
 new_character = {}
@@ -144,11 +152,12 @@ while not salir:
 
                     flg_02 = False
                     flg_021 = True
+                    new_id=len(dict_characters)
                     new_nombre= input("Name of the new character")
                     while new_nombre=="":
                         print("The option is empty")
                         new_nombre = input("Name of the new character")
-                    new_character = []
+                    
 
                     #MINI MENU DE ELECCION DE CREW
                     crew_choice = "Side of the new character"+"\n"+ "1)Marine"+"\n"+"2)Pirate"
@@ -166,6 +175,7 @@ while not salir:
                         if crew_option == 1:
                         #Marine y escoger el rango del miembro
                             print("Ahora lo quito")
+                            print("Range or crew of the new character"+"\n"+"1) Admiral"+"\n"+"2)ViceAdmiral"+"\n"+"3) Lieutenant")
 
                         elif crew_option == 2:
                             # Pirata y escoger el equipo
@@ -230,18 +240,83 @@ while not salir:
                         else:
                             opc = int(opc)
                             if opc == 1:
-                                lista_ids=list(dict_characters.keys())
-                                for pasada in range (len(lista_ids)):
-                                    for i in range(len(lista_ids)-1 -pasada):
-                                        if lista_ids[i][2:]>lista_ids[i+1][2:]:
-                                            aux=lista_ids[i]
+                                lista_ids = list(dict_characters.keys())
+                                for pasada in range(len(lista_ids)):
+                                    for i in range(len(lista_ids) - 1 - pasada):
+                                        if lista_ids[i] > lista_ids[i + 1]:
+                                            aux = lista_ids[i]
                                             lista_ids[i] = lista_ids[i + 1]
                                             lista_ids[i + 1] = aux
-                                print(lista_ids)
-                                datos=""
+                                datos = ""
                                 for id in lista_ids:
-                                    datos = datos +"\n" + "{:10}{:10}{:>10}{:>10}{:>10}{:>10}".format(id,dict_characters[id]["description"],dict_characters[id]["strength"],dict_characters[id]["defense"],dict_characters[id]["agility"],dict_characters[id]["stamina"])+"\n"
-                                print(cabeceraidch,tituloch,datos)
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                                       dict_characters[id]["name"],
+                                                                                                       dict_characters[id]["strength"],
+                                                                                                       dict_characters[id]["speed"],
+                                                                                                       dict_characters[id]["experience"])+"\n"
+                                print(cabecerachid, cabecerach+"\n"+ "*"*60,datos)
+                            elif opc == 2:
+                                lista_id = list(dict_characters.keys())
+                                for pasada in range(len(lista_id)):
+                                    for i in range(len(lista_id) - 1 - pasada):
+                                        if dict_characters[lista_id[i]]["name"] > dict_characters[lista_id[i + 1]]["name"]:
+                                            aux = lista_id[i]
+                                            lista_id[i] = lista_id[i + 1]
+                                            lista_id[i + 1] = aux
+                                datos = ""
+
+                                for id in lista_id:
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                                       dict_characters[id]["name"],
+                                                                                                       dict_characters[id]["strength"],
+                                                                                                       dict_characters[id]["speed"],
+                                                                                                       dict_characters[id]["experience"])+"\n"
+                                print(cabecerachn, cabecerach+"\n"+ "*"*60,datos)
+                            elif opc ==3:
+                                lista_id = list(dict_characters.keys())
+                                for pasada in range(len(lista_id)):
+                                    for i in range(len(lista_id) - 1 - pasada):
+                                        if dict_characters[lista_id[i]]["strength"] > dict_characters[lista_id[i + 1]]["strength"]:
+                                            aux = lista_id[i]
+                                            lista_id[i] = lista_id[i + 1]
+                                            lista_id[i + 1] = aux
+                                datos = ""
+
+                                for id in lista_id:
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_characters[id][
+                                                                                                 "name"],
+                                                                                             dict_characters[id][
+                                                                                                 "strength"],
+                                                                                             dict_characters[id][
+                                                                                                 "speed"],
+                                                                                             dict_characters[id][
+                                                                                                 "experience"]) + "\n"
+                                print(cabecerachs, cabecerach + "\n" + "*" * 60, datos)
+                            elif opc ==4:
+                                lista_id = list(dict_characters.keys())
+                                for pasada in range(len(lista_id)):
+                                    for i in range(len(lista_id) - 1 - pasada):
+                                        if dict_characters[lista_id[i]]["speed"] > dict_characters[lista_id[i + 1]]["speed"]:
+                                            aux = lista_id[i]
+                                            lista_id[i] = lista_id[i + 1]
+                                            lista_id[i + 1] = aux
+                                datos = ""
+
+                                for id in lista_id:
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_characters[id][
+                                                                                                 "name"],
+                                                                                             dict_characters[id][
+                                                                                                 "strength"],
+                                                                                             dict_characters[id][
+                                                                                                 "speed"],
+                                                                                             dict_characters[id][
+                                                                                                 "experience"]) + "\n"
+                                print(cabecerachspe, cabecerach + "\n" + "*" * 60, datos)
+                            elif opc == 5:
+                                flg_041=False
+                                flg_04=True
                 elif opc == 2:
                     flg_04 = False
                     flg_042 = True
@@ -255,7 +330,9 @@ while not salir:
                             print("opcion numerica no valida")
                             input("Enter to continue")
                         else:
-                            opc = int(opc)                                
+                            opc = int(opc)
+                            
+
                 elif opc == 5:
                     flg_00 = True
                     flg_04 = False
