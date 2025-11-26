@@ -65,7 +65,7 @@ cabecerachs = "Characters ordered by Strength".center(60, "=")
 cabecerachspe = "Characters ordered by Speed".center(60, "=")
 cabecerach = "\n{:<10}{:<17}{:<13}{:<10}{:<10}".format("Id", "name", "strength", "speed", "experience")
 cabecerawpid = "Weapon ordered by Id".center(60, "=")
-titulowp = "\n{:<10}{:<17}{:<13}{:<10}{:<10}".format("Id", "name", "strength", "speed", "two hand")
+cabecerawp = "\n{:<10}{:<17}{:<13}{:<12}{:}".format("Id", "name", "strength", "speed", "two hand")
 cabecerawpn = "Weapon ordered by Name".center(60, "=")
 cabecerawps = "Weapon ordered by Strength".center(60, "=")
 cabeceracwppe = "Weapon ordered by Speed".center(60, "=")
@@ -213,7 +213,7 @@ while not salir:
                     flg_00 = True
                     flg_03 = False
                     
-        # menu04
+        # menu04 finish
         while flg_04:
             print(menu4)
             opc = input("->Option: ")
@@ -331,7 +331,94 @@ while not salir:
                             input("Enter to continue")
                         else:
                             opc = int(opc)
+                            if opc==1:
+                                lista_ids = list(dict_weapons.keys())
+                                for pasada in range(len(lista_ids)):
+                                    for i in range(len(lista_ids) - 1 - pasada):
+                                        if lista_ids[i] > lista_ids[i + 1]:
+                                            aux = lista_ids[i]
+                                            lista_ids[i] = lista_ids[i + 1]
+                                            lista_ids[i + 1] = aux
+                                datos = ""
+                                for id in lista_ids:
+                                    if dict_weapons[id]["two_hand"] == 1:
+                                        dict_weapons[id]["two_hand"] = "True"
+                                    else:
+                                        dict_weapons[id]["two_hand"] = "False"
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_weapons[id][
+                                                                                                 "name"],
+                                                                                             dict_weapons[id][
+                                                                                                 "strength"],
+                                                                                             dict_weapons[id][
+                                                                                                 "speed"],
+                                                                                             dict_weapons[id][
+                                                                                             "two_hand"]) + "\n"
+                                print(cabecerawpid,cabecerawp+ "\n" + "*" * 60, datos)
                             
+                            elif opc ==2:
+                                lista_ids = list(dict_weapons.keys())
+                                for pasada in range(len(lista_ids)):
+                                    for i in range(len(lista_ids) - 1 - pasada):
+                                        if dict_weapons[lista_ids[i]]["name"] > dict_weapons[lista_ids[i + 1]]["name"]:
+                                            aux = lista_ids[i]
+                                            lista_ids[i] = lista_ids[i + 1]
+                                            lista_ids[i + 1] = aux
+                                datos = ""
+                                for id in lista_ids:
+                                    if dict_weapons[id]["two_hand"] == 1:
+                                        dict_weapons[id]["two_hand"] = "True"
+                                    else:
+                                        dict_weapons[id]["two_hand"] = "False"
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_weapons[id]["name"],
+                                                                                             dict_weapons[id]["strength"],
+                                                                                             dict_weapons[id]["speed"],
+                                                                                             dict_weapons[id]["two_hand"]) + "\n"
+                                print(cabecerawpid,cabecerawp+ "\n" + "*" * 60, datos)
+                            elif opc ==3:
+                                lista_ids = list(dict_weapons.keys())
+                                for pasada in range(len(lista_ids)):
+                                    for i in range(len(lista_ids) - 1 - pasada):
+                                        if dict_weapons[lista_ids[i]]["strength"] > dict_weapons[lista_ids[i + 1]]["strength"]:
+                                            aux = lista_ids[i]
+                                            lista_ids[i] = lista_ids[i + 1]
+                                            lista_ids[i + 1] = aux
+                                datos = ""
+                                for id in lista_ids:
+                                    if dict_weapons[id]["two_hand"] == 1:
+                                        dict_weapons[id]["two_hand"] = "True"
+                                    else:
+                                        dict_weapons[id]["two_hand"] = "False"
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_weapons[id]["name"],
+                                                                                             dict_weapons[id]["strength"],
+                                                                                             dict_weapons[id]["speed"],
+                                                                                             dict_weapons[id]["two_hand"]) + "\n"
+                                print(cabecerawpid,cabecerawp+ "\n" + "*" * 60, datos)
+                            elif opc ==4:
+                                lista_ids = list(dict_weapons.keys())
+                                for pasada in range(len(lista_ids)):
+                                    for i in range(len(lista_ids) - 1 - pasada):
+                                        if dict_weapons[lista_ids[i]]["speed"] > dict_weapons[lista_ids[i + 1]]["speed"]:
+                                            aux = lista_ids[i]
+                                            lista_ids[i] = lista_ids[i + 1]
+                                            lista_ids[i + 1] = aux
+                                datos = ""
+                                for id in lista_ids:
+                                    if dict_weapons[id]["two_hand"] == 1:
+                                        dict_weapons[id]["two_hand"] = "True"
+                                    else:
+                                        dict_weapons[id]["two_hand"] = "False"
+                                    datos = datos + "\n{:<10}{:<17}{:^15}{:>3}{:>15}".format(id,
+                                                                                             dict_weapons[id]["name"],
+                                                                                             dict_weapons[id]["strength"],
+                                                                                             dict_weapons[id]["speed"],
+                                                                                             dict_weapons[id]["two_hand"]) + "\n"
+                                print(cabecerawpid,cabecerawp+ "\n" + "*" * 60, datos)    
+                            elif opc == 5:
+                                flg_042=False
+                                flg_04=True
 
                 elif opc == 5:
                     flg_00 = True
