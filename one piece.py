@@ -54,10 +54,10 @@ menu="Menu 0 (One Piece)".center(40,"=")+"\n\n"+"1)Play"+"\n"+"2)Create"+"\n"+"3
 menu1="Not Implemented".center(40,"=")+"\n"+"1)Go back"
 menu2="Menu 02 Create".center(40,"=")+"\n\n"+"1) Crete Character"+"\n"+"2) Create  Weapon"+"\n"+"3) Go back"
 menu3="Menu 03 (Edit Menu) ".center(40,"=")+"\n\n"+"1)Edit character"+"\n"+"2)Edit weapon"+"\n"+"3)Go back"
-menu31="Menu 031 (Select Character to Edit) ".center(30,"=")+"\n\n"
-menu32="Menu 032 (Select Weapon to Edit) ".center(30,"=")+"\n\n"
-menu31X="Menu 031X (Character Feature to Edit) ".center(30,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
-menu32X="Menu 032X (Weapon Feature to Edit) ".center(30,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
+menu31="Menu 031 (Select Character to Edit) ".center(60,"=")+"\n\n"
+menu32="Menu 032 (Select Weapon to Edit) ".center(60,"=")+"\n\n"
+menu31X="Menu 031X (Character Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
+menu32X="Menu 032X (Weapon Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
 menu4="Menu 04 (List)".center(40,"=")+"\n\n"+"1)List characters"+"\n"+"2)List weapons"+"\n"+"3)List side"+"\n"+"4)List range"+"\n"+"5)Go back"
 menu41="Menu 041 (List Character)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
 menu42="Menu 042 (List Weapons)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
@@ -247,71 +247,33 @@ while not salir:
                                                                                      dict_weapons[id][
                                                                                          "speed"]) + "\n"
                         print(datos)
-                        id = input("ID Weapon to edit\n")
-                        if not opc.isdigit():
-                            print("Opcion no numerica")
-                            input("Enter to continue")
-                        elif not (int(opc) in range(1, 4)):
-                            print("opcion numerica no valida")
-                            input("Enter to continue")
-                        else:
-                            flg_031 = False
-                            flg_031X = True
-                            while flg_031X:
-                                print(menu31X)
-                                opc = input("->Option: ")
-                                if not opc.isdigit():
-                                    print("Opcion no numerica")
-                                    input("Enter to continue")
-                                elif not (int(opc) in range(1, 4)):
-                                    print("opcion numerica no valida")
-                                    input("Enter to continue")
-                                else:
-                                    print("")
 
-
-                elif opc == 3:
-                    flg_00 = True
-                    flg_03 = False
-            print(menu3)
-            opc = input("->Option: ")
-            if not opc .isdigit():
-                print("Opcion no numerica")
-                input("Enter to continue")
-            elif not (int(opc) in range(1, 4)):
-                print("opcion numerica no valida")
-                input("Enter to continue")
-            else:
-                opc = int(opc)
-                if opc == 1:
-                    flg_03 = False
-                    flg_031 = True
-                    while flg_031:
-                        print(menu31)
-                        opc = input("->Option: ")
-                        if not opc .isdigit():
-                            print("Opcion no numerica")
+                        id_editar_weapon = input("ID Weapon to edit\n")
+                        id_editar_weapon = int(id_editar_weapon)
+                        if not int(id_editar_weapon.isdigit()):
+                            print("Invalid Option".center(50,"="))
                             input("Enter to continue")
-                        elif not (int(opc) in range(1, 4)):
-                            print("opcion numerica no valida")
+                        elif not int(id_editar_weapon) in range(1, len(dict_weapons) + 1):
+                            print("Invalid Option".center(50,"="))  
                             input("Enter to continue")
                         else:
-                            print("")
-                elif opc == 2:
-                    flg_03 = False
-                    flg_032 = True
-                    while flg_032:
-                        print(menu32)
-                        
-                        opc = input("->Option: ")
-                        if not opc .isdigit():
-                            print("Opcion no numerica")
-                            input("Enter to continue")
-                        elif not (int(opc) in range(1, 4)):
-                            print("opcion numerica no valida")
-                            input("Enter to continue")
-                        else:
-                            print("")
+                            opc = int (opc)
+                            if opc == 1:
+                                flg_032 = False
+                                flg_032X = True
+                            else:
+                                arma_edit = dict_weapons[opc - 1]
+                                while flg_032X:
+                                    print(menu32X)
+                                    opc = input("->Option: ")
+                                    if not opc.isdigit():
+                                        print("Opcion no numerica")
+                                        input("Enter to continue")
+                                    elif not (int(opc) in range(1, 4)):
+                                        print("opcion numerica no valida")
+                                        input("Enter to continue")
+                                    else:
+                                        print("")
 
 
                 elif opc == 3:
