@@ -56,8 +56,8 @@ menu2="Menu 02 Create".center(40,"=")+"\n\n"+"1) Crete Character"+"\n"+"2) Creat
 menu3="Menu 03 (Edit Menu) ".center(40,"=")+"\n\n"+"1)Edit character"+"\n"+"2)Edit weapon"+"\n"+"3)Go back"
 menu31="Menu 031 (Select Character to Edit) ".center(60,"=")+"\n\n"
 menu32="Menu 032 (Select Weapon to Edit) ".center(60,"=")+"\n\n"
-menu31X="Menu 031X (Character Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
-menu32X="Menu 032X (Weapon Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"3)Go back"
+menu31X="Menu 031X (Character Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"4)Go back"
+menu32X="Menu 032X (Weapon Feature to Edit) ".center(60,"=")+"\n\n"+"1)Name"+"\n"+"2)Plus Strength"+"\n"+"3)Plus speed"+"\n"+"4)Go back"
 menu4="Menu 04 (List)".center(40,"=")+"\n\n"+"1)List characters"+"\n"+"2)List weapons"+"\n"+"3)List side"+"\n"+"4)List range"+"\n"+"5)Go back"
 menu41="Menu 041 (List Character)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
 menu42="Menu 042 (List Weapons)".center(40,"=")+"\n\n"+"1)List by ID"+"\n"+"2)List by name"+"\n"+"3)List Strangth"+"\n"+"4)List by speed"+"\n"+"5)Go back"
@@ -88,6 +88,8 @@ flg_022=False
 flg_03=False
 flg_031=False
 flg_032=False
+flg_031X=False
+flg_032X=False
 flg_04=False
 flg_041=False
 flg_042=False
@@ -240,40 +242,46 @@ while not salir:
                         datos = ""
                         for id in lista_ids:
                             datos = datos + "{}) {}, Strength: {}, Speed {}".format(id,
-                                                                                     dict_weapons[id][
-                                                                                         "name"],
-                                                                                     dict_weapons[id][
-                                                                                         "strength"],
-                                                                                     dict_weapons[id][
-                                                                                         "speed"]) + "\n"
+                                                                                    dict_weapons[id][
+                                                                                        "name"],
+                                                                                    dict_weapons[id][
+                                                                                        "strength"],
+                                                                                    dict_weapons[id][
+                                                                                        "speed"]) + "\n"
                         print(datos)
 
                         id_editar_weapon = input("ID Weapon to edit\n")
-                        id_editar_weapon = int(id_editar_weapon)
-                        if not int(id_editar_weapon.isdigit()):
-                            print("Invalid Option".center(50,"="))
+                        if not id_editar_weapon.isdigit():
+                            print("Invalid Option".center(50, "="))
                             input("Enter to continue")
                         elif not int(id_editar_weapon) in range(1, len(dict_weapons) + 1):
-                            print("Invalid Option".center(50,"="))  
+                            print("Invalid Option".center(50, "="))
                             input("Enter to continue")
                         else:
-                            opc = int (opc)
-                            if opc == 1:
-                                flg_032 = False
-                                flg_032X = True
-                            else:
-                                arma_edit = dict_weapons[opc - 1]
-                                while flg_032X:
-                                    print(menu32X)
-                                    opc = input("->Option: ")
-                                    if not opc.isdigit():
-                                        print("Opcion no numerica")
-                                        input("Enter to continue")
-                                    elif not (int(opc) in range(1, 4)):
-                                        print("opcion numerica no valida")
-                                        input("Enter to continue")
-                                    else:
-                                        print("")
+                            opc = int(opc)
+                            flg_032 = False
+                            flg_032X = True
+                            arma_edit = dict_weapons[opc - 1]
+                            while flg_032X:
+                                print(menu32X)
+                                opc = input("->Option: ")
+                                if not opc.isdigit():
+                                    print("Opcion no numerica")
+                                    input("Enter to continue")
+                                elif not (int(opc) in range(1, 4)):
+                                    print("opcion numerica no valida")
+                                    input("Enter to continue")
+                                else:
+                                    opc = int(opc)
+                                    if opc == 1:
+                                        print("name")
+                                    elif opc == 2 :
+                                        print("Plus Strength")
+                                    elif opc == 3 :
+                                        print("Plus Speed")
+                                    elif opc == 4 :
+                                        flg_032 = True
+                                        flg_032X = False
 
 
                 elif opc == 3:
